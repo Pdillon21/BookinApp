@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register.SignUpActivity"
+    >
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        android:gravity="start"
+        android:text="Register!"
+        android:id="@+id/screenTitle"
+        android:textSize="30sp"
+        android:textColor="@color/mainBlue"
+        android:fontFamily="serif"
+
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/sloganTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"
+        android:gravity="start"
+        android:text="Create an account and start browsing for your favorite best-selling books!"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/screenTitle">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/emailLabelTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Email"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/sloganTv">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/emailEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="ernest.hemin@nytimes.com"
+        android:theme="@style/BookinTheme"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/emailLabelTv">
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/passwordLabelTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Password"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/emailEt"
+
+        >
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/passwordEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="********"
+        android:inputType="textPassword"
+        android:theme="@style/BookinTheme"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/passwordLabelTv">
+
+    </EditText>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/strengthPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/passwordEt"
+        >
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/strengthPassTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/errorRed"
+            android:layout_marginEnd="10sp"
+            android:fontFamily="serif"
+            android:text="Weak"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            >
+        </TextView>
+        <ImageView
+            android:layout_marginEnd="10sp"
+            android:layout_marginStart="10sp"
+            android:id="@+id/strengthPassIV"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/strengthPassTV"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/confirmPasswordLabelTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Confirm password"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/strengthPass"
+
+        >
+
+    </TextView>
+    <EditText
+        android:id="@+id/confirmPasswordEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="********"
+        android:inputType="textPassword"
+        android:theme="@style/BookinTheme"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordLabelTv">
+
+    </EditText>
+
+
+    <com.example.bookin.entities.CustomBookinButton
+        android:id="@+id/signUpBttn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button_dark"
+        android:gravity="center"
+        android:paddingVertical="8dp"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left"
+        app:layout_constraintRight_toRightOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordEt">
+
+    </com.example.bookin.entities.CustomBookinButton>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
