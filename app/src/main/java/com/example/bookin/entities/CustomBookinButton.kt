@@ -10,7 +10,7 @@ import com.example.bookin.R
 
 class CustomBookinButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : Button(context, attrs, defStyleAttr) {
+) : androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr) {
 
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
@@ -25,6 +25,7 @@ class CustomBookinButton @JvmOverloads constructor(
         }
         return super.onTouchEvent(event)
         //ToDo hacer animacion sobre si mismo
+        // reemplazar por un button con progressbar y un touch interceptor
 
     }
 }

@@ -1,6 +1,8 @@
 package com.example.bookin.home.adapters.nestedRecyclerAdapter
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.LayoutInflater
@@ -10,6 +12,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +25,7 @@ import com.bumptech.glide.request.target.Target
 import com.example.bookin.R
 import com.example.bookin.model.books.BookContainer
 import com.example.bookin.repositories.GoogleImageRepository
+import com.example.bookin.utils.BookUtils
 import kotlinx.android.synthetic.main.book_recycler_cell.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -46,7 +50,7 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisViewHolder: BookViewHolder = holder as BookViewHolder
-        thisViewHolder.bookTitleTv.setText(booklist[position].bookDetails[0].title)
+        thisViewHolder.bookTitleTv.setText(BookUtils().getBookTitleFormated(booklist[position]))
         performGlideAttempt(booklist[position],holder)
     }
 
@@ -99,7 +103,22 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
         holder.bookImageIV.setImageResource(R.drawable.ic_warning_white)
     }
     fun imageLoaded (holder: BookViewHolder){
-        holder.imageLoadingContainer.visibility = View.GONE
+        if (isImageViewEmpty(holder.bookImageIV)){
+            holder.imageLoadingContainer.visibility = View.GONE
+            holder.bookImageIV.scaleType = ImageView.ScaleType.FIT_CENTER
+            holder.bookImageIV.setImageResource(R.drawable.ic_warning_white)
+        } else {
+            holder.imageLoadingContainer.visibility = View.GONE
+        }
+
+    }
+
+    fun isImageViewEmpty (view : ImageView): Boolean {
+        val drawable : Drawable = view.drawable
+        val bitMap : Bitmap = drawable.toBitmap(50,50,null)
+        return bitMap.byteCount==0
+        /
+        //view.drawToBitmap().hasMipMap()
     }
 
     fun getImageUrl(bookContainer: BookContainer) : String? {
@@ -112,7 +131,6 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
         } else {
             return null
         }
-
     }
 
 

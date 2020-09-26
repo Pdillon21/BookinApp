@@ -73,8 +73,10 @@ class LoginActivity : BookinActivity() {
     }
 
     private fun logAsd() {
-        emailEt.setText("asd@gmail.com")
-        passwordEt.setText("asdasd")
+        val emailAsd : String = "asd@gmail.com"
+        val passAsd : String = "asdasd"
+        emailEt.setText(emailAsd)
+        passwordEt.setText(passAsd)
         val view : View = findViewById(R.id.signInBttn)
         view.performClick()
     }
@@ -109,6 +111,7 @@ class LoginActivity : BookinActivity() {
 
     private fun displayEmailErrorMessage (errorTypes: ErrorTypes?){
         //ToDo set errorType message
+        // falta agregar un textView abajo del mail para mostrar el tipo de error
         when (errorTypes){
             ErrorTypes.EMAIL_FIELD_EMPTY -> {
                 emailEt.background.setTint(resources.getColor(R.color.errorRed))
@@ -124,6 +127,7 @@ class LoginActivity : BookinActivity() {
 
     private fun displayPassErrorMessage (errorTypes: ErrorTypes?){
         //ToDo set errorType message
+        // falta agregar un textView abajo del password para mostrar el tipo de error
         when (errorTypes){
             ErrorTypes.PASSWORD_FIELD_EMPTY -> {
                 passwordEt.background.setTint(resources.getColor(R.color.errorRed))

@@ -20,13 +20,12 @@ class HomeFragmentViewModel : ViewModel() {
     var listsToSearch: MutableLiveData<MutableList<BookListName>> = MutableLiveData()
     var allBooksInLists: MutableLiveData<MutableList<NytListeReceiber>> = MutableLiveData()
 
-    var allListForHomeDefined: MutableLiveData<Boolean> = MutableLiveData()
+    var allListForHomeDefined: MutableLiveData<Boolean> = MutableLiveData(false)
     var allBooksFetched : MutableLiveData<Boolean> = MutableLiveData()
     private val repo: BookRepository = BookRepository()
 
 
     fun init() {
-        allListForHomeDefined.value = false
         initObservers()
         getBooksFromService()
     }

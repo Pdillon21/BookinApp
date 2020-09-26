@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
             if (it!=null && it.results.isNotEmpty()){
                 viewModel.getRandomListsForHome(4)
             } else {
+                // Todo se podría agregar para obtenga otra categoria y la traiga en su lugar
                 print("error")
             }
 

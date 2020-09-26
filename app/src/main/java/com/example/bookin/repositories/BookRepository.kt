@@ -3,14 +3,12 @@ package com.example.bookin.repositories
 
 import androidx.lifecycle.MutableLiveData
 import com.example.bookin.model.books.NytListeReceiber
-import com.example.bookin.model.lists.BookListName
 import com.example.bookin.model.lists.NytBookListReceiber
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.Exception
 
 class BookRepository {
     val BASE_URL: String = "https://api.nytimes.com/svc/books/v3/"

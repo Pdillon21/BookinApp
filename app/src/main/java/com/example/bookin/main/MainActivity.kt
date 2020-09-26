@@ -32,6 +32,7 @@ class MainActivity : BookinActivity() {
         var homeFragment : HomeFragment? = null
         var profileFragment : ProfileFragment? = null
         var searchFragment : SearchFragment? = null
+        //ToDo estudiar la posibilidad de cambiar por un viewPager (no habria que programar el slide entre fragments)
         bottomNavBar.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.search -> {
