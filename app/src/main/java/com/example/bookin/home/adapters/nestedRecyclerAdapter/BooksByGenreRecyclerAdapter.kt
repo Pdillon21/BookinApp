@@ -103,6 +103,8 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
         holder.bookImageIV.setImageResource(R.drawable.ic_warning_white)
     }
     fun imageLoaded (holder: BookViewHolder){
+        holder.imageLoadingContainer.visibility = View.GONE
+        /*
         if (isImageViewEmpty(holder.bookImageIV)){
             holder.imageLoadingContainer.visibility = View.GONE
             holder.bookImageIV.scaleType = ImageView.ScaleType.FIT_CENTER
@@ -110,6 +112,8 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
         } else {
             holder.imageLoadingContainer.visibility = View.GONE
         }
+        
+         */
 
     }
 
@@ -117,7 +121,7 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
         val drawable : Drawable = view.drawable
         val bitMap : Bitmap = drawable.toBitmap(50,50,null)
         return bitMap.byteCount==0
-        /
+
         //view.drawToBitmap().hasMipMap()
     }
 
