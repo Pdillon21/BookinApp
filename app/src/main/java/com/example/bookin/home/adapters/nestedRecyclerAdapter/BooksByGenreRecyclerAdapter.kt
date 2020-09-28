@@ -51,12 +51,12 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisViewHolder: BookViewHolder = holder as BookViewHolder
         thisViewHolder.bookTitleTv.setText(BookUtils().getBookTitleFormated(booklist[position]))
-        performGlideAttempt(booklist[position],holder)
+        performGlideAttempt(booklist[position], holder)
     }
 
-    fun performGlideAttempt(bookContainer: BookContainer,holder: BookViewHolder){
-        val imageUrl : String? = getImageUrl(bookContainer)
-        if (imageUrl.isNullOrBlank()){
+    fun performGlideAttempt(bookContainer: BookContainer, holder: BookViewHolder) {
+        val imageUrl: String? = getImageUrl(bookContainer)
+        if (imageUrl.isNullOrBlank()) {
             failedToLoadImage(holder)
         } else {
             try {
@@ -65,7 +65,7 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
                     .error(R.drawable.ic_warning_white)
                     .fallback(R.drawable.ic_warning_white)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .listener(object : RequestListener<Drawable>{
+                    .listener(object : RequestListener<Drawable> {
                         override fun onLoadFailed(
                             e: GlideException?,
                             model: Any?,
@@ -90,43 +90,29 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
                     })
                     .into(holder.bookImageIV)
 
-            } catch (e : java.lang.Exception){
+            } catch (e: java.lang.Exception) {
                 failedToLoadImage(holder)
             }
         }
 
     }
 
-    fun failedToLoadImage(holder: BookViewHolder){
+    fun failedToLoadImage(holder: BookViewHolder) {
         holder.imageLoadingContainer.visibility = View.GONE
         holder.bookImageIV.scaleType = ImageView.ScaleType.FIT_CENTER
         holder.bookImageIV.setImageResource(R.drawable.ic_warning_white)
     }
-    fun imageLoaded (holder: BookViewHolder){
-        if (isImageViewEmpty(holder.bookImageIV)){
-            holder.imageLoadingContainer.visibility = View.GONE
-            holder.bookImageIV.scaleType = ImageView.ScaleType.FIT_CENTER
-            holder.bookImageIV.setImageResource(R.drawable.ic_warning_white)
-        } else {
-            holder.imageLoadingContainer.visibility = View.GONE
-        }
 
+    fun imageLoaded(holder: BookViewHolder) {
+        holder.imageLoadingContainer.visibility = View.GONE
     }
 
-    fun isImageViewEmpty (view : ImageView): Boolean {
-        val drawable : Drawable = view.drawable
-        val bitMap : Bitmap = drawable.toBitmap(50,50,null)
-        return bitMap.byteCount==0
-        /
-        //view.drawToBitmap().hasMipMap()
-    }
-
-    fun getImageUrl(bookContainer: BookContainer) : String? {
-        val isbn10 : String = bookContainer.bookDetails[0].primaryIsbn10
-        val isbn13 : String = bookContainer.bookDetails[0].primaryIsbn13
-        if (!isbn10.isBlank()){
+    fun getImageUrl(bookContainer: BookContainer): String? {
+        val isbn10: String = bookContainer.bookDetails[0].primaryIsbn10
+        val isbn13: String = bookContainer.bookDetails[0].primaryIsbn13
+        if (!isbn10.isBlank()) {
             return "http://covers.openlibrary.org/b/isbn/$isbn10-M.jpg"
-        } else if (!isbn13.isBlank()){
+        } else if (!isbn13.isBlank()) {
             return "http://covers.openlibrary.org/b/isbn/$isbn13-M.jpg"
         } else {
             return null
@@ -134,13 +120,11 @@ class BooksByGenreRecyclerAdapter(var context: Context, var booklist: List<BookC
     }
 
 
-
-
     class BookViewHolder constructor(itemView: View, context: Context) :
         RecyclerView.ViewHolder(itemView) {
         val bookTitleTv: TextView = itemView.bookTitleTextView
         val bookImageIV: ImageView = itemView.bookImageView
-        val imageLoadingContainer : ConstraintLayout = itemView.imageLoadingContainer
+        val imageLoadingContainer: ConstraintLayout = itemView.imageLoadingContainer
     }
 
 }

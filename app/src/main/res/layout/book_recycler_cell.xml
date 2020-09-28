@@ -5,30 +5,37 @@
     android:layout_height="150sp">
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="8dp"
         android:layout_width="match_parent"
-        app:cardCornerRadius="6dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="6dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/ic_warning_white">
+            </ImageView>
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:background="@color/mainGrey"
                 android:id="@+id/imageLoadingContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/mainGrey">
+
                 <ProgressBar
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/mainBlue"
+                    android:progressTint="@color/mainBlue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:progressTint="@color/mainBlue"
-                    android:indeterminateTint="@color/mainBlue"
-                    >
+                    app:layout_constraintTop_toTopOf="parent">
                 </ProgressBar>
 
 
@@ -38,25 +45,22 @@
                 android:id="@+id/bookImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                >
+                android:scaleType="fitXY">
             </ImageView>
 
 
-
-
             <TextView
-                android:background="@color/mainBlue"
                 android:id="@+id/bookTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
-                android:paddingTop="2dp"
+                android:background="@color/mainBlue"
                 android:gravity="start"
+                android:paddingStart="2dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="2dp"
                 android:text="book Title"
                 android:textColor="@color/mainWhite"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
